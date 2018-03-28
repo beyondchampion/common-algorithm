@@ -10,22 +10,25 @@ package com.algorithm.findnuminarray;
  */
 public class FindNumInArray {
 
-    public boolean Find(int target, int [][] array) throws Exception{
-
-        for(int i = 0;i<array.length;i++){
-            for(int j= 0;j<array[i].length;j++){
-                if(array[i][j] == target){
-                    return true;
-                }
+    public boolean Find(int target,int [][] array) {
+        int len = array.length-1; //数组长度，最大下标
+        int i = 0;
+       while((len >= 0) && (i < array[0].length)){
+            if (array[len][i] > target) {
+                len--;
+            }else if(array[len][i] < target){
+                i++;
+            }else{
+                return true;
             }
-        }
+       }
         return false;
     }
 
     public static void main(String[] args) {
 
-        int [][] array = {{1,2,3,29},{4,5,6,28},{7,8,9,27},{17,18,19,127}};
-        int target = 0;
+        int [][] array = {{1,2,3,29},{4,5,6,38},{7,8,9,47},{17,18,19,127}};
+        int target = 29;
         FindNumInArray fa = new FindNumInArray();
 
         try {
